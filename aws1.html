@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed AWS Course Syllabus | Besant Technologies</title>
+    <style>
+        :root {
+            --aws-blue: #232f3e;
+            --aws-orange: #ff9900;
+            --bg-color: #f2f4f8;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--aws-blue);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo span { color: var(--aws-orange); }
+
+        .contact { font-size: 0.9rem; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(35, 47, 62, 0.9), rgba(35, 47, 62, 0.9)), url('https://source.unsplash.com/random/1600x400?cloud+server');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: #ddd; }
+
+        /* Grid Layout */
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            padding: 40px 0;
+        }
+
+        /* Module Card */
+        .module-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border-top: 5px solid var(--aws-orange);
+            transition: transform 0.2s ease;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background-color: #fff;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--aws-blue);
+        }
+
+        .badge {
+            background-color: var(--aws-blue);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 0 20px 20px 20px;
+        }
+
+        /* Detailed List */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+
+        li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        li:last-child { border-bottom: none; }
+
+        li::before {
+            content: "✓";
+            color: var(--aws-orange);
+            font-weight: bold;
+            margin-right: 10px;
+            min-width: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--aws-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .syllabus-grid { grid-template-columns: 1fr; }
+            .header-content { flex-direction: column; text-align: center; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <div class="logo">Besant <span>Technologies</span></div>
+        <div class="contact">
+            📞 +91-8099 770 770 | +91-8767 260 270
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>AWS Solutions Architect Syllabus</h1>
+        <p>Complete SAA-C02 Course Curriculum | 20 Modules | 100% Job Guarantee Program</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="syllabus-grid">
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Linux Fundamentals</h3>
+                <span class="badge">Module 1</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Overview of all basic commands</li>
+                    <li>Vim editor modes</li>
+                    <li>Filesystem hierarchy - Basic topics</li>
+                    <li>File and directories creation</li>
+                    <li>Grep & Filter commands (head, tail, more, less)</li>
+                    <li>Creating users and groups</li>
+                    <li>Modifying, deleting users and group</li>
+                    <li>Linux permissions & Basic permissions overview</li>
+                    <li>Software management: Yellowdog update modifier (yum)</li>
+                    <li>Different runlevels</li>
+                    <li>Services and daemons</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Why Cloud?</h3>
+                <span class="badge">Module 2</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Why Cloud and What is Cloud Computing?</li>
+                    <li>Identify features and benefits of cloud computing</li>
+                    <li>Deployment models: Public, Private, Hybrid Cloud</li>
+                    <li>Virtualization in Cloud model & Hypervisor benefits</li>
+                    <li>Service Models: IaaS, PaaS, SaaS</li>
+                    <li>Importance of scaling in cloud computing</li>
+                    <li>Different types of scaling and its applications</li>
+                    <li>Issues overcome using cloud applications</li>
+                    <li>Cost model used in cloud computing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>AWS - An Overview</h3>
+                <span class="badge">Module 3</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Describe the features of AWS</li>
+                    <li>The features of AWS marketplace</li>
+                    <li>Describe Amazon Compute, Storage, Network, & Database Services</li>
+                    <li>Global Infrastructure - Regions and Availability Zones</li>
+                    <li>Create a free tier account in AWS and onboarding</li>
+                    <li>Introduction to AWS management console</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Identity Access Management (IAM)</h3>
+                <span class="badge">Module 4</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Protect your AWS by different authentication systems</li>
+                    <li>Password policies set for users</li>
+                    <li>AWS User Account and Groups in detail</li>
+                    <li>Creating custom policies in AWS</li>
+                    <li>Introduction about Roles and its use</li>
+                    <li>Creating Roles and associating policies</li>
+                    <li>Creating programmatic access vs console access</li>
+                    <li>Associating policies to the user and groups</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>EC2 Instance</h3>
+                <span class="badge">Module 5</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Describe AMI and AWS Marketplace templates</li>
+                    <li>Launch a basic EC2 instance</li>
+                    <li>Instance Types: Reserved, On-demand, Spot, Dedicated</li>
+                    <li>Security groups and tags for EC2 instance</li>
+                    <li>Public key / Private key & protecting EC2 with keys</li>
+                    <li>Attaching and detaching EBS volumes</li>
+                    <li>Create custom AMI and working with different regions</li>
+                    <li>Make use of amazon EBS volume and create snapshots</li>
+                    <li>Deploying a new instance from the created AMI</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Auto-scaling</h3>
+                <span class="badge">Module 6</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Get Started with Auto Scaling Using the Console</li>
+                    <li>Creating Launch configurations for autoscaling groups</li>
+                    <li>Maintain a Fixed Number of Running EC2 Instances</li>
+                    <li>Dynamic Scaling strategies</li>
+                    <li>The lifecycle of autoscaling</li>
+                    <li>Policies of autoscaling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Load Balancing</h3>
+                <span class="badge">Module 7</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Introduction to Loadbalancer (ELB)</li>
+                    <li>Different types of Loadbalancer in AWS</li>
+                    <li>Application Load balancer</li>
+                    <li>Network Load balancer</li>
+                    <li>Classic Load balancer</li>
+                    <li>Migrating classic load balancer to new load balancer</li>
+                    <li>Components and types of load balancing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>EBS (Elastic Block Storage)</h3>
+                <span class="badge">Module 8</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Create EBS volumes</li>
+                    <li>Delete EBS Volumes</li>
+                    <li>Attach and detach EBS volumes with EC2 instance</li>
+                    <li>Creating and deleting snapshots</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Object Storage in Cloud</h3>
+                <span class="badge">Module 9</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Understanding S3 durability and redundancy</li>
+                    <li>Introduction about S3 Buckets</li>
+                    <li>How S3 Uploading works and how to Download</li>
+                    <li>How to S3 Permissions</li>
+                    <li>S3 Object Versioning & S3 Lifecycle Policies</li>
+                    <li>Storage Gateway</li>
+                    <li>Import Export</li>
+                    <li>S3 Transfer Acceleration</li>
+                    <li>Glacier storage</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>CloudFront</h3>
+                <span class="badge">Module 10</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Describing CloudFront features</li>
+                    <li>Creating a CloudFront distribution</li>
+                    <li>Hosting a website on CloudFront distribution</li>
+                    <li>Implementing global restrictions</li>
+                    <li>Configuring origins and behaviors</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Route53</h3>
+                <span class="badge">Module 11</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Describe Hosted zones and Domain name understanding</li>
+                    <li>How to create hosted zones</li>
+                    <li>Hosting a website with custom domain name</li>
+                    <li>Understanding routing policies</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>AWS Security Management</h3>
+                <span class="badge">Module 12</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Describing Security Practices for Cloud Deployment</li>
+                    <li>AWS Shared Responsibilities and Securities</li>
+                    <li>Importance of CloudTrail</li>
+                    <li>Describing Trust Advisor</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Amazon VPC</h3>
+                <span class="badge">Module 13</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>VPC Advantages and understanding IP addressing CIDR</li>
+                    <li>Default and Non-default VPC</li>
+                    <li>Different Components in VPC</li>
+                    <li>Amazon VPC, Private Subnet, and Public Subnet</li>
+                    <li>AWS Networking, Security Groups, and Network ACLS</li>
+                    <li>Configuration and management of VPN connectivity</li>
+                    <li>Subnet and Subnet Mask</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Relational Database Service (RDS)</h3>
+                <span class="badge">Module 14</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Introduction to RDS & Different DB services (DynamoDB, Redshift)</li>
+                    <li>Create MYSQL RDS Instance, Oracle RDS, MS SQL RDS</li>
+                    <li>Configuring the database</li>
+                    <li>Configuring backups</li>
+                    <li>Configuring the maintenance windows</li>
+                    <li>Connecting to the database</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>DynamoDB</h3>
+                <span class="badge">Module 15</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Creating a DynamoDB</li>
+                    <li>Adding data manually</li>
+                    <li>Learn about strong and eventual consistency</li>
+                    <li>Calculating Read write consistency</li>
+                    <li>Configuring alarms</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Monitoring Services</h3>
+                <span class="badge">Module 16</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Knowledge on CloudWatch - A monitoring service</li>
+                    <li>Create and Configuring Monitoring services</li>
+                    <li>How to perform Setting thresholds and Configuring actions</li>
+                    <li>Creating a CloudWatch alarm</li>
+                    <li>Getting statistics for EC2 instances</li>
+                    <li>Monitoring other AWS services</li>
+                    <li>Configuring Notifications</li>
+                    <li>Integrating CloudWatch with Auto scaling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Application Services</h3>
+                <span class="badge">Module 17</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>What is SNS (Simple Notification Service)</li>
+                    <li>Creating a topic & subscriptions</li>
+                    <li>SQS (Simple Queue Service) & SES (Simple Email Service)</li>
+                    <li>Lambda and Elastic Beanstalk overview</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>AWS Troubleshooting</h3>
+                <span class="badge">Module 18</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Troubleshooting EC2 instance</li>
+                    <li>Troubleshooting using CloudWatch</li>
+                    <li>Troubleshooting using ELB</li>
+                    <li>Troubleshooting by using CloudFront</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>Architecture and Design</h3>
+                <span class="badge">Module 19</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Backup and Disaster Recovery (DR)</li>
+                    <li>How to manage Disaster Recovery and Backups</li>
+                    <li>Best Practice for DR and Backups</li>
+                    <li>AWS High Availability Design</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="card-header">
+                <h3>DevOps Fundamentals</h3>
+                <span class="badge">Module 20</span>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>An understanding of DevOps</li>
+                    <li>The modern DevOps toolsets</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Besant Technologies | AWS Course Syllabus</p>
+    </div>
+</footer>
+
+</body>
+</html>

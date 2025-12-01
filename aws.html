@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Certified Solutions Architect Training </title>
+    <style>
+        :root {
+            --primary: #232f3e; /* AWS Dark Blue */
+            --accent: #ff9900; /* AWS Orange */
+            --light: #f8f9fa;
+            --dark: #1a1a1a;
+            --text-gray: #555;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a232e 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e68a00;
+        }
+
+        /* Course Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: -50px;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Syllabus Section */
+        .syllabus-section {
+            padding: 2rem 0 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .module-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .module-number {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .module-content {
+            padding: 20px;
+        }
+
+        .module-content ul {
+            list-style-type: none;
+        }
+
+        .module-content li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .module-content li::before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .contact-large {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">Royal <span>Technosoft</span></div>
+            <div class="contact-info">
+                📞 +91-9879472527
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AWS Certified Solutions Architect Training</h1>
+            <p>Master Amazon Web Services from basics to advanced levels. Prepare for the SAA-C02 Exam with industry experts.</p>
+            <a href="#syllabus" class="btn">View Syllabus</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Industry Experts</h3>
+                <p>Curriculum framed by experienced professionals to meet current market standards.</p>
+            </div>
+            <div class="info-card">
+                <h3>Job Oriented</h3>
+                <p>100% Job Guarantee course designed for Any Degree / Diploma candidates.</p>
+            </div>
+            <div class="info-card">
+                <h3>Certification Ready</h3>
+                <p>Covers all topics required for the AWS Certified Solutions Architect - Associate exam.</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="syllabus" class="syllabus-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Course Curriculum</h2>
+                <p>Comprehensive 20-Module Program</p>
+            </div>
+
+            <div class="modules-grid">
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Linux Fundamentals</h4>
+                        <span class="module-number">01</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Filesystem Hierarchy:</strong> Understanding basic Linux structure.</li>
+                            <li><strong>Commands:</strong> Basic commands, Grep, Filter commands (head, tail, more, less).</li>
+                            <li><strong>Editors:</strong> Vim editor modes and usage.</li>
+                            <li><strong>User Management:</strong> Creating/modifying users, groups, and permissions.</li>
+                            <li><strong>Package Management:</strong> Yellowdog Updater Modified (YUM) and RPM.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Cloud Computing Concepts</h4>
+                        <span class="module-number">02</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Why Cloud?:</strong> Features, benefits, and cost models.</li>
+                            <li><strong>Deployment Models:</strong> Public, Private, and Hybrid Cloud.</li>
+                            <li><strong>Service Models:</strong> IaaS, PaaS, and SaaS explained.</li>
+                            <li><strong>Virtualization:</strong> Hypervisors and their role in the cloud.</li>
+                            <li><strong>Scaling:</strong> Importance of scaling and various applications.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>AWS Overview</h4>
+                        <span class="module-number">03</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Global Infrastructure:</strong> Regions and Availability Zones.</li>
+                            <li><strong>Service Categories:</strong> Compute, Storage, Network, and Database services.</li>
+                            <li><strong>Getting Started:</strong> Free Tier account creation and Management Console tour.</li>
+                            <li><strong>Marketplace:</strong> Overview of AWS Marketplace features.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>IAM (Identity Access Management)</h4>
+                        <span class="module-number">04</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Authentication:</strong> Password policies and MFA.</li>
+                            <li><strong>Users & Groups:</strong> Creating accounts and associating policies.</li>
+                            <li><strong>Roles:</strong> Creating roles for service-to-service access.</li>
+                            <li><strong>Access:</strong> Programmatic vs. Console access management.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>EC2 (Elastic Compute Cloud)</h4>
+                        <span class="module-number">05</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Instances:</strong> Launching Basic EC2 instances from AMI.</li>
+                            <li><strong>Pricing Models:</strong> On-demand, Reserved, Spot, and Dedicated.</li>
+                            <li><strong>Security:</strong> Security groups, Tags, and Key Pairs (Public/Private).</li>
+                            <li><strong>Storage:</strong> Attaching EBS volumes and creating Snapshots.</li>
+                            <li><strong>Custom Images:</strong> Creating and deploying custom AMIs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Auto-scaling</h4>
+                        <span class="module-number">06</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Configuration:</strong> Launch configurations for scaling groups.</li>
+                            <li><strong>Strategies:</strong> Dynamic Scaling and Fixed Number policies.</li>
+                            <li><strong>Lifecycle:</strong> Understanding the auto-scaling lifecycle.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Load Balancing (ELB)</h4>
+                        <span class="module-number">07</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Types of ELB:</strong> Application, Network, and Classic Load Balancers.</li>
+                            <li><strong>Migration:</strong> Moving from Classic to newer generation balancers.</li>
+                            <li><strong>Components:</strong> Listeners, Targets, and Health Checks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>EBS (Elastic Block Storage)</h4>
+                        <span class="module-number">08</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Volume Management:</strong> Creating, attaching, and deleting volumes.</li>
+                            <li><strong>Data Protection:</strong> Creating and deleting snapshots.</li>
+                            <li><strong>Usage:</strong> Persistent block storage for EC2.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Object Storage (S3 & Glacier)</h4>
+                        <span class="module-number">09</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>S3 Basics:</strong> Buckets, Objects, Upload/Download.</li>
+                            <li><strong>Advanced S3:</strong> Versioning, Lifecycle Policies, and Transfer Acceleration.</li>
+                            <li><strong>Archival:</strong> Glacier storage for long-term retention.</li>
+                            <li><strong>Hybrid:</strong> AWS Storage Gateway and Import/Export.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>CloudFront (CDN)</h4>
+                        <span class="module-number">10</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Distributions:</strong> Creating distributions and configuring origins.</li>
+                            <li><strong>Performance:</strong> Caching behaviors and global edge locations.</li>
+                            <li><strong>Security:</strong> Implementing global restrictions (Geo-blocking).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Route53 (DNS)</h4>
+                        <span class="module-number">11</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Hosted Zones:</strong> Creating zones and understanding domain names.</li>
+                            <li><strong>Routing Policies:</strong> Simple, Weighted, Latency, and Failover routing.</li>
+                            <li><strong>Hosting:</strong> Pointing custom domains to AWS resources.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Security Management</h4>
+                        <span class="module-number">12</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Shared Responsibility Model:</strong> AWS vs. Customer responsibilities.</li>
+                            <li><strong>Auditing:</strong> Importance of CloudTrail.</li>
+                            <li><strong>Optimization:</strong> Using Trusted Advisor for security and cost checks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>VPC (Virtual Private Cloud)</h4>
+                        <span class="module-number">13</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Networking:</strong> IP addressing, CIDR, and Subnets (Public/Private).</li>
+                            <li><strong>Security:</strong> Security Groups vs. Network ACLs.</li>
+                            <li><strong>Connectivity:</strong> VPN configurations and Internet Gateways.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>RDS (Relational Database Service)</h4>
+                        <span class="module-number">14</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Engines:</strong> MySQL, Oracle, MS SQL, etc.</li>
+                            <li><strong>Management:</strong> Configuration, Backups, and Maintenance Windows.</li>
+                            <li><strong>Connectivity:</strong> Connecting applications to RDS instances.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="module-card">
+                    <div class="module-header">
+                        <h4>DynamoDB (NoSQL)</h4>
+                        <span class="module-number">15</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Basics:</strong> Creating tables and adding data manually.</li>
+                            <li><strong>Consistency:</strong> Strong vs. Eventual consistency models.</li>
+                            <li><strong>Performance:</strong> Read/Write capacity units and Alarms.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Monitoring (CloudWatch)</h4>
+                        <span class="module-number">16</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Metrics:</strong> Getting statistics for EC2 and other services.</li>
+                            <li><strong>Alarms:</strong> Setting thresholds and configuring actions.</li>
+                            <li><strong>Integration:</strong> Combining CloudWatch with Auto-scaling.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Application Services</h4>
+                        <span class="module-number">17</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Messaging:</strong> SNS (Topics/Subscriptions) and SQS (Queues).</li>
+                            <li><strong>Email:</strong> SES (Simple Email Service).</li>
+                            <li><strong>Compute/App:</strong> AWS Lambda (Serverless) and Elastic Beanstalk.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <h4>Troubleshooting</h4>
+                        <span class="module-number">18</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Scenarios:</strong> Troubleshooting EC2, ELB, and CloudFront issues.</li>
+                            <li><strong>Tools:</strong> Using CloudWatch logs for diagnosis.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="module-card">
+                    <div class="module-header">
+                        <h4>Architecture & Design</h4>
+                        <span class="module-number">19</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Resilience:</strong> High Availability Design and Disaster Recovery (DR).</li>
+                            <li><strong>Best Practices:</strong> Backup strategies and DR planning.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="module-card">
+                    <div class="module-header">
+                        <h4>DevOps Fundamentals</h4>
+                        <span class="module-number">20</span>
+                    </div>
+                    <div class="module-content">
+                        <ul>
+                            <li><strong>Concepts:</strong> Understanding DevOps culture.</li>
+                            <li><strong>Toolsets:</strong> Overview of modern DevOps tools in the cloud.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="contact-large">
+                Questions? Call us: +91-9879472527
+            </div>
+            <p>&copy; 2024  All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Mastery Course 2025</title>
+    <style>
+        :root {
+            --primary: #3DDC84; /* Android Green */
+            --primary-dim: #3ddc8433;
+            --dark: #121212;
+            --card-bg: #1e1e1e;
+            --text: #e0e0e0;
+            --accent: #4285F4;
+            --code-bg: #2d2d2d;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background: #000;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .brand h1 { font-size: 1.5rem; margin: 0; color: var(--primary); }
+        .week-selector {
+            padding: 8px 12px;
+            background: #333;
+            color: #fff;
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Main Slide Area */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .slide-container {
+            width: 90%;
+            max-width: 1200px;
+            height: 90%;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            overflow: hidden;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        /* Slide Header */
+        .slide-header {
+            padding: 25px 40px;
+            background: linear-gradient(90deg, #1a1a1a, #252525);
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .day-badge {
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .slide-title { font-size: 2rem; margin: 10px 0 0 0; color: #fff; }
+
+        /* Slide Content - Split View */
+        .slide-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            overflow: hidden;
+        }
+        
+        .panel {
+            padding: 30px 40px;
+            overflow-y: auto;
+        }
+        
+        .theory-panel { border-right: 1px solid #333; }
+        .practical-panel { background: #252526; }
+
+        h3 { color: var(--primary); border-bottom: 2px solid var(--primary-dim); padding-bottom: 10px; margin-top: 0; }
+        
+        ul { padding-left: 20px; line-height: 1.6; }
+        li { margin-bottom: 12px; }
+        
+        .code-block {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: #a5d6ff;
+            border-left: 4px solid var(--accent);
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+
+        /* Controls */
+        .controls {
+            padding: 20px 40px;
+            background: #151515;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(61, 220, 132, 0.3); }
+        .nav-btn:disabled { background: #444; color: #777; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: #333;
+            margin: 0 30px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e1e1e; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand">
+        <svg fill="#3DDC84" width="30" height="30" viewBox="0 0 24 24"><path d="M17.6 11.48 L19.44 8.3a.63.63 0 0 0-1.09-.63l-1.88 3.24a11.43 11.43 0 0 0-8.94 0L5.65 7.67a.63.63 0 0 0-1.09.63L6.4 11.48A10.81 10.81 0 0 0 1 20h22a10.81 10.81 0 0 0-5.4-8.52zM7.5 17.5a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5zm9 0a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5z"/></svg>
+        <h1>Android Mastery 2025</h1>
+    </div>
+    <select id="weekSelect" class="week-selector" onchange="jumpToWeek()">
+        </select>
+</header>
+
+<main>
+    <div class="slide-container" id="slideContainer">
+        </div>
+</main>
+
+<script>
+    // ---------------------------------------------------------
+    // COMPLETE SYLLABUS DATA (Weeks 1-16)
+    // ---------------------------------------------------------
+    const courseData = [
+        {
+            week: 1,
+            title: "Android Foundations",
+            days: [
+                { day: "Day 1", topic: "Intro & Architecture", theory: ["Android OS Architecture (Kernel, HAL, Framework).", "APK vs AAB formats.", "Project Structure (Manifest, Gradle, Res)."], practical: ["Create 'Hello World' in Android Studio.", "Log Lifecycle callbacks in Logcat.", "Explore strings.xml and colors.xml."] },
+                { day: "Day 2", topic: "Activity Lifecycle", theory: ["Lifecycle States: Created, Started, Resumed.", "Callbacks: onCreate, onPause, onDestroy.", "Handling Screen Rotation."], practical: ["Implement all lifecycle logs.", "Rotate device and observe Logcat flow.", "Test 'Don't keep activities' option."] },
+                { day: "Day 3", topic: "Intents", theory: ["Explicit Intents: App-to-App nav.", "Implicit Intents: System actions.", "Intent Filters."], practical: ["Create 2 Activities.", "Navigate Activity A -> B.", "Open a webpage using ACTION_VIEW."] },
+                { day: "Day 4", topic: "Resources", theory: ["res/values: strings, colors, dimens.", "res/drawable: images, XML shapes.", "res/mipmap: Icons."], practical: ["Create custom color palette.", "Design a rounded button shape XML.", "Apply string resources to all text."] },
+                { day: "Day 5", topic: "UI Basics", theory: ["Views: TextView, EditText, Button.", "ViewGroups.", "Event Handling (OnClick)."], practical: ["Build a Login UI.", "Handle button click with Toast.", "Read text from EditText."] },
+                { day: "Day 6", topic: "Layouts Overview", theory: ["ConstraintLayout basics.", "LinearLayout (Weights).", "ScrollView usage."], practical: ["Create a complex Form UI using ConstraintLayout.", "Nest a LinearLayout inside ScrollView."] },
+                { day: "Day 7", topic: "Week 1 Project", theory: ["Combining Activities, Intents, and Layouts."], practical: ["Build 'Hello Screens' App.", "Splash Screen -> Login -> Dashboard.", "Pass username via Intent."] }
+            ]
+        },
+        {
+            week: 2,
+            title: "UI Masterclass",
+            days: [
+                { day: "Day 8", topic: "ConstraintLayout Deep Dive", theory: ["Chains (Spread, Packed).", "Guidelines & Barriers.", "Bias & Ratios."], practical: ["Recreate a complex Login UI pixel-perfectly.", "Use Guidelines for responsive alignment."] },
+                { day: "Day 9", topic: "Menus & Toolbars", theory: ["Toolbar vs ActionBar.", "Menu Resource XML.", "Options Menu setup."], practical: ["Replace default ActionBar with Toolbar.", "Add 'Settings' and 'Logout' menu items."] },
+                { day: "Day 10", topic: "Styles & Themes", theory: ["Style vs Theme.", "Material Components.", "Dark Mode basics."], practical: ["Create a global App Theme.", "Style a Button to look like Material 3."] },
+                { day: "Day 11", topic: "User Feedback", theory: ["Toast vs Snackbar.", "AlertDialog builder.", "Custom Dialogs."], practical: ["Show Snackbar with 'Undo' action.", "Create an 'Exit App?' confirmation dialog."] },
+                { day: "Day 12", topic: "SharedPreferences", theory: ["Key-Value storage.", "Modes (Private).", "Editor commit vs apply."], practical: ["Save Login State (IsLoggedIn).", "Auto-redirect to Home if logged in."] },
+                { day: "Day 13", topic: "Form Validation", theory: ["Input Validation Logic.", "Regex Patterns (Email).", "TextInputLayout errors."], practical: ["Validate Email/Password on button click.", "Show error on TextInputLayout."] },
+                { day: "Day 14", topic: "Week 2 Project", theory: ["Integration of UI components."], practical: ["Build 'Form Manager App'.", "Register -> Validations -> Save to Prefs -> Login -> Dashboard."] }
+            ]
+        },
+        {
+            week: 3,
+            title: "Fragments & Lists",
+            days: [
+                { day: "Day 15", topic: "Activity Lifecycle Deep Dive", theory: ["Config Changes (Rotation).", "State Restoration (Bundle).", "Process Death."], practical: ["Handle rotation without losing EditText data.", "Use onSaveInstanceState."] },
+                { day: "Day 16", topic: "Intents & Data Passing", theory: ["Passing Bundles.", "Serializable vs Parcelable.", "Intent Flags."], practical: ["Pass a User object between activities using Serializable."] },
+                { day: "Day 17", topic: "Fragment Basics", theory: ["Fragment Lifecycle.", "FragmentManager.", "Container Views."], practical: ["Create a Fragment and host it in an Activity.", "Log Fragment lifecycle methods."] },
+                { day: "Day 18", topic: "Fragment Transactions", theory: ["Add vs Replace.", "AddToBackStack.", "Fragment Communication."], practical: ["Build a 2-fragment flow (List -> Detail).", "Implement Back navigation."] },
+                { day: "Day 19", topic: "RecyclerView Setup", theory: ["Why RecyclerView?", "Adapter & ViewHolder Pattern.", "LayoutManagers."], practical: ["Setup RecyclerView in XML.", "Create Adapter and ViewHolder class."] },
+                { day: "Day 20", topic: "RecyclerView Interaction", theory: ["Handling Clicks.", "Loading Images (Glide).", "Grid Layouts."], practical: ["Add OnClick to List Items.", "Load random images using Glide."] },
+                { day: "Day 21", topic: "Week 3 Project", theory: ["Fragment & List Integration."], practical: ["Build 'User Listing App'.", "RecyclerView in Fragment A -> Click -> Data to Fragment B."] }
+            ]
+        },
+        {
+            week: 4,
+            title: "Navigation & Modern UI",
+            days: [
+                { day: "Day 22", topic: "ViewBinding", theory: ["Eliminating findViewById.", "Null safety.", "Binding in Fragments."], practical: ["Convert all previous layouts to ViewBinding.", "Fix memory leaks in Fragments."] },
+                { day: "Day 23", topic: "Advanced Menus", theory: ["Context Menus.", "Popup Menus.", "Dynamic Menu inflation."], practical: ["Implement a long-press Context Menu on a List Item."] },
+                { day: "Day 24", topic: "Dialogs Mastery", theory: ["Single/Multi Choice Dialogs.", "Custom Layout Dialogs."], practical: ["Create a Custom Dialog for User Input."] },
+                { day: "Day 25", topic: "Toolbar & Search", theory: ["SearchView Widget.", "QueryTextListener.", "Filtering Data."], practical: ["Add Search icon to Toolbar.", "Filter RecyclerView list as you type."] },
+                { day: "Day 26", topic: "Bottom Navigation", theory: ["BottomNavigationView.", "Menu integration.", "Fragment Switching."], practical: ["Setup Bottom Nav with 3 Tabs.", "Switch Fragments on tab select."] },
+                { day: "Day 27", topic: "Week 4 Project", theory: ["Settings & Navigation."], practical: ["Build 'Settings Hub'.", "BottomNav + SharedPrefs + Dialogs + Toolbar Search."] }
+            ]
+        },
+        {
+            week: 5,
+            title: "Advanced RecyclerView",
+            days: [
+                { day: "Day 28", topic: "RecyclerView Recap", theory: ["Review Adapter/ViewHolder.", "Performance tips."], practical: ["Refactor previous Adapter for cleaner code."] },
+                { day: "Day 29", topic: "CardView & Styling", theory: ["Card Elevation & Radius.", "Ripple Effects.", "Row Design."], practical: ["Design a beautiful Card row item.", "Add Ripple effect on click."] },
+                { day: "Day 30", topic: "Click Listeners", theory: ["Interface callbacks.", "Handling button clicks inside rows."], practical: ["Handle clicks on specific buttons inside a list item."] },
+                { day: "Day 31", topic: "Images in Lists", theory: ["Glide/Picasso Caching.", "Placeholders & Errors.", "CenterCrop vs FitCenter."], practical: ["Load high-res images in list.", "Add placeholder/error drawables."] },
+                { day: "Day 32", topic: "Filtering", theory: ["Filterable Interface.", "Updating Data List."], practical: ["Implement efficient search filtering in Adapter."] },
+                { day: "Day 33", topic: "Pagination", theory: ["OnScrollListener.", "Loading More Logic.", "Endless Scroll."], practical: ["Implement 'Load More' when scrolling to bottom."] },
+                { day: "Day 34", topic: "Week 5 Project", theory: ["Complex Lists."], practical: ["Build 'Contacts Pro'.", "Pagination + Search + CardView + Image Loading."] }
+            ]
+        },
+        {
+            week: 6,
+            title: "Advanced Fragments",
+            days: [
+                { day: "Day 35", topic: "Fragment Lifecycle Deep Dive", theory: ["View Lifecycle vs Fragment Lifecycle.", "onViewCreated usage."], practical: ["Debug lifecycle during navigation."] },
+                { day: "Day 36", topic: "Static vs Dynamic", theory: ["<fragment> tag vs FragmentContainerView.", "Transactions."], practical: ["Refactor XML static fragments to dynamic transactions."] },
+                { day: "Day 37", topic: "Communication", theory: ["Fragment Result API.", "Shared ViewModel.", "Interface Pattern."], practical: ["Pass data between sibling fragments using Result API."] },
+                { day: "Day 38", topic: "ViewBinding in Fragments", theory: ["onDestroyView cleanup.", "Backing properties."], practical: ["Implement safe ViewBinding pattern in all fragments."] },
+                { day: "Day 39", topic: "Launch Modes", theory: ["Standard, SingleTop, SingleTask, SingleInstance."], practical: ["Experiment with SingleTop in a Notification flow."] },
+                { day: "Day 40", topic: "State Management", theory: ["Save/Restore State.", "show/hide vs replace."], practical: ["Implement BottomNav keeping Fragment state alive."] },
+                { day: "Day 41", topic: "Week 6 Project", theory: ["Social App UI."], practical: ["Build 'SocialHub'.", "Instagram-like navigation with state preservation."] }
+            ]
+        },
+        {
+            week: 7,
+            title: "Intents & Deep Links",
+            days: [
+                { day: "Day 42", topic: "Explicit Intents", theory: ["Starting Activities.", "Request Codes (Legacy)."], practical: ["Start Activity for Result (Legacy way comparison)."] },
+                { day: "Day 43", topic: "Bundles & Parcelable", theory: ["Passing Complex Objects.", "Parcelable implementation."], practical: ["Create User object (Parcelable).", "Pass ArrayList of Users."] },
+                { day: "Day 44", topic: "Parcelable Deep Dive", theory: ["Parcelable Creator.", "Performance benefits over Serializable."], practical: ["Manually implement writeToParcel."] },
+                { day: "Day 45", topic: "Implicit Intents", theory: ["Common Actions: DIAL, VIEW, SEND.", "MIME Types."], practical: ["Build a 'Share to...' feature."] },
+                { day: "Day 46", topic: "Sharing Data", theory: ["ShareSheet.", "Sending Text/Images."], practical: ["Share an image from app to WhatsApp/Instagram."] },
+                { day: "Day 47", topic: "Activity Result API", theory: ["Modern `registerForActivityResult`.", "Contracts."], practical: ["Get image from Gallery using new Result API."] },
+                { day: "Day 48", topic: "Deep Links", theory: ["Scheme & Host.", "Handling Incoming Intents."], practical: ["Create Deep Link `myapp://profile/1`.", "Open specific screen."] }
+            ]
+        },
+        {
+            week: 8,
+            title: "RecyclerView Pro",
+            days: [
+                { day: "Day 49", topic: "Optimization Theory", theory: ["How RecyclerView Recycles.", "ViewPool."], practical: ["Analyze layout inspector for list performance."] },
+                { day: "Day 50", topic: "Multiple ViewTypes", theory: ["getItemViewType.", "Heterogeneous layouts."], practical: ["Build Chat UI (Sender/Receiver rows)."] },
+                { day: "Day 51", topic: "Click Handling Pro", theory: ["Child clicks.", "Long press actions."], practical: ["Implement 'Like' button inside feed item."] },
+                { day: "Day 52", topic: "DiffUtil", theory: ["Why notifyDataSetChanged is bad.", "DiffUtil Callback."], practical: ["Implement DiffUtil for smooth list updates."] },
+                { day: "Day 53", topic: "Pagination Logic", theory: ["Scroll state monitoring.", "Loading view type."], practical: ["Add a 'Spinner' at bottom while loading more data."] },
+                { day: "Day 54", topic: "Nested RecyclerViews", theory: ["Horizontal inside Vertical.", "SnapHelper."], practical: ["Build 'Stories' row inside Feed list."] },
+                { day: "Day 55", topic: "Week 8 Project", theory: ["Pro List App."], practical: ["Build 'FeedMaster'.", "Nested Lists + DiffUtil + Multi-ViewType."] }
+            ]
+        },
+        {
+            week: 9,
+            title: "Advanced UI Components",
+            days: [
+                { day: "Day 56", topic: "ViewPager2", theory: ["Swiping Views.", "FragmentStateAdapter."], practical: ["Create an Intro/Onboarding slider."] },
+                { day: "Day 57", topic: "CoordinatorLayout", theory: ["Behaviors.", "CollapsingToolbarLayout."], practical: ["Implement Parallax Header with Scrolling."] },
+                { day: "Day 58", topic: "MotionLayout", theory: ["ConstraintSets.", "Transitions & Keyframes."], practical: ["Animate a scene from Start to End state."] },
+                { day: "Day 59", topic: "BottomSheet", theory: ["Modal vs Persistent.", "BottomSheetBehavior."], practical: ["Create a Persistent Bottom Sheet player."] },
+                { day: "Day 60", topic: "FAB Animations", theory: ["Anchor Gravity.", "Hide on Scroll."], practical: ["Hide FAB when RecyclerView scrolls down."] },
+                { day: "Day 61", topic: "Snackbars & Toasts", theory: ["Custom Views.", "Snackbar Actions."], practical: ["Custom Toast layout.", "Snackbar with Action."] },
+                { day: "Day 62", topic: "Week 9 Project", theory: ["Polish & UX."], practical: ["Build 'SocialUI'.", "Collapsing Toolbar + ViewPager2 Tabs."] }
+            ]
+        },
+        {
+            week: 10,
+            title: "Networking (Retrofit)",
+            days: [
+                { day: "Day 63", topic: "HTTP & REST", theory: ["GET, POST, PUT, DELETE.", "JSON Format.", "Status Codes."], practical: ["Test API endpoints using Postman."] },
+                { day: "Day 64", topic: "Retrofit Setup", theory: ["Retrofit Builder.", "Base URL.", "Interfaces."], practical: ["Setup Retrofit client singleton."] },
+                { day: "Day 65", topic: "POST Requests", theory: ["@Body.", "@Field.", "Sending Data."], practical: ["Send a Login POST request to dummy API."] },
+                { day: "Day 66", topic: "JSON Parsing", theory: ["GSON Converter.", "Data Classes."], practical: ["Parse complex nested JSON response."] },
+                { day: "Day 67", topic: "Image Loading", theory: ["Glide/Picasso with API.", "Caching Strategies."], practical: ["Display API User Avatars in List."] },
+                { day: "Day 68", topic: "Error Handling", theory: ["Try/Catch.", "Response Codes.", "Interceptors."], practical: ["Handle 404/500 errors gracefully."] },
+                { day: "Day 69", topic: "Week 10 Project", theory: ["Connected App."], practical: ["Build 'UserFeed'.", "Fetch Posts -> Display List -> Click for Detail."] }
+            ]
+        },
+        {
+            week: 11,
+            title: "Local Database (Room)",
+            days: [
+                { day: "Day 70", topic: "SQLite Basics", theory: ["SQLiteOpenHelper.", "Raw SQL Queries."], practical: ["Basic CRUD with raw SQLite (Legacy)."] },
+                { day: "Day 71", topic: "Room Intro", theory: ["Entity, DAO, Database.", "Annotation Processing."], practical: ["Setup Room Database infrastructure."] },
+                { day: "Day 72", topic: "LiveData Integration", theory: ["Observing DB changes.", "Reactive UI."], practical: ["Bind Room data to RecyclerView via LiveData."] },
+                { day: "Day 73", topic: "Queries", theory: ["@Query.", "Filtering & Sorting."], practical: ["Implement Search query in DAO."] },
+                { day: "Day 74", topic: "DataStore", theory: ["Replacement for SharedPreferences.", "Preferences DataStore."], practical: ["Migrate SharedPreferences to DataStore."] },
+                { day: "Day 75", topic: "Migrations", theory: ["Schema Changes.", "Migration Strategies."], practical: ["Add a column to DB and write Migration."] },
+                { day: "Day 76", topic: "Week 11 Project", theory: ["Offline Persistence."], practical: ["Build 'OfflineNotes'.", "Full CRUD + Search + Offline Storage."] }
+            ]
+        },
+        {
+            week: 12,
+            title: "Firebase Integration",
+            days: [
+                { day: "Day 77", topic: "Firebase Setup", theory: ["Console Setup.", "google-services.json."], practical: ["Connect App to Firebase Console."] },
+                { day: "Day 78", topic: "Firestore", theory: ["Collections & Documents.", "Snapshot Listeners."], practical: ["Save and Read User Profile from Firestore."] },
+                { day: "Day 79", topic: "Realtime DB", theory: ["JSON Tree.", "Realtime Sync."], practical: ["Build a simple Chat Message sync."] },
+                { day: "Day 80", topic: "Storage", theory: ["Uploading Files.", "Download URLs."], practical: ["Upload Profile Image to Firebase Storage."] },
+                { day: "Day 81", topic: "Push Notifications", theory: ["FCM.", "Foreground vs Background."], practical: ["Send Test Notification from Console."] },
+                { day: "Day 82", topic: "Security Rules", theory: ["Auth Rules.", "Validation."], practical: ["Write rules to allow only owner access."] },
+                { day: "Day 83", topic: "Week 12 Project", theory: ["Cloud App."], practical: ["Build 'FirebaseSocial'.", "Auth + Firestore + Storage + Chat."] }
+            ]
+        },
+        {
+            week: 13,
+            title: "Background & System",
+            days: [
+                { day: "Day 84", topic: "WorkManager", theory: ["Constraints.", "OneTime vs Periodic."], practical: ["Schedule a background Sync task."] },
+                { day: "Day 85", topic: "Services", theory: ["Foreground Service.", "Notification Channel."], practical: ["Create a Music Player Foreground Service."] },
+                { day: "Day 86", topic: "BroadcastReceiver", theory: ["System Broadcasts.", "Dynamic Registration."], practical: ["Listen for Airplane Mode / Battery Low."] },
+                { day: "Day 87", topic: "ContentProvider", theory: ["Sharing Data.", "Accessing Contacts."], practical: ["Read Phone Contacts into a List."] },
+                { day: "Day 88", topic: "Deep Linking", theory: ["Navigation Component.", "URI handling."], practical: ["Handle web link to open app screen."] },
+                { day: "Day 89", topic: "Integration", theory: ["Service + WorkManager."], practical: ["Sync DB in background, notify on finish."] },
+                { day: "Day 90", topic: "Week 13 Project", theory: ["System Integration."], practical: ["Build 'AdvancedApp'.", "Sync Job + Service + Broadcasts."] }
+            ]
+        },
+        {
+            week: 14,
+            title: "Testing & Deploy",
+            days: [
+                { day: "Day 91", topic: "Unit Testing", theory: ["JUnit.", "Mocking."], practical: ["Write Unit Tests for Calculator Logic."] },
+                { day: "Day 92", topic: "Debugging", theory: ["Breakpoints.", "Logcat filters.", "Profiler."], practical: ["Debug a memory leak in sample app."] },
+                { day: "Day 93", topic: "Performance", theory: ["Memory Management.", "Layout Optimization."], practical: ["Optimize Nested Layouts."] },
+                { day: "Day 94", topic: "App Signing", theory: ["Keystore.", "Debug vs Release."], practical: ["Generate Signed APK."] },
+                { day: "Day 95", topic: "ProGuard/R8", theory: ["Obfuscation.", "Keep rules."], practical: ["Enable Minify and fix crashes."] },
+                { day: "Day 96", topic: "Crashlytics", theory: ["Crash Reporting.", "Analytics."], practical: ["Force crash and view report."] },
+                { day: "Day 97", topic: "Week 14 Project", theory: ["Release Ready."], practical: ["Prepare 'OptimizedApp'.", "Tested, Signed, Obfuscated."] }
+            ]
+        },
+        {
+            week: 15,
+            title: "Capstone Project",
+            days: [
+                { day: "Day 98", topic: "Planning", theory: ["Architecture (MVVM).", "Tech Stack."], practical: ["Setup Project Structure & Git."] },
+                { day: "Day 99", topic: "Auth & Profile", theory: ["Integration Flow."], practical: ["Implement Login & Profile Mgmt."] },
+                { day: "Day 100", topic: "Core CRUD", theory: ["Data Layer."], practical: ["Implement Main Features (Posts/Tasks)."] },
+                { day: "Day 101", topic: "Media & Sync", theory: ["File Handling."], practical: ["Image Uploads & Background Sync."] },
+                { day: "Day 102", topic: "Offline First", theory: ["Room Caching."], practical: ["Ensure App works without Internet."] },
+                { day: "Day 103", topic: "Polish & Test", theory: ["UI/UX Refinement."], practical: ["Add Animations & Run Tests."] },
+                { day: "Day 104", topic: "Final Build", theory: ["Production."], practical: ["Generate Final AAB for Play Store."] }
+            ]
+        },
+        {
+            week: 16,
+            title: "Bonus: Jetpack Compose",
+            days: [
+                { day: "Day 105", topic: "Compose Intro", theory: ["Declarative UI.", "@Composable."], practical: ["Hello World in Compose."] },
+                { day: "Day 106", topic: "Layouts", theory: ["Column, Row, Box.", "Modifiers."], practical: ["Build a Profile Card."] },
+                { day: "Day 107", topic: "Theming", theory: ["Material 3.", "Color Scheme."], practical: ["Apply Dark/Light Theme."] },
+                { day: "Day 108", topic: "Animations", theory: ["AnimateAsState."], practical: ["Simple State Animations."] },
+                { day: "Day 109", topic: "State & ViewModel", theory: ["Remember.", "State Hoisting."], practical: ["Connect ViewModel to Screen."] },
+                { day: "Day 110", topic: "Advanced Patterns", theory: ["Scaffold.", "LazyColumn."], practical: ["Build a List with App Bar."] },
+                { day: "Day 111", topic: "Final Compose App", theory: ["Modern App."], practical: ["Build 'ComposeCapstone'."] }
+            ]
+        }
+    ];
+
+    // ---------------------------------------------------------
+    // LOGIC TO RENDER SLIDES
+    // ---------------------------------------------------------
+    let currentWeekIndex = 0;
+    let currentDayIndex = 0;
+
+    const slideContainer = document.getElementById('slideContainer');
+    const weekSelect = document.getElementById('weekSelect');
+
+    // Populate Week Selector
+    courseData.forEach((weekData, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.text = `Week ${weekData.week}: ${weekData.title}`;
+        weekSelect.appendChild(option);
+    });
+
+    function renderSlide() {
+        const week = courseData[currentWeekIndex];
+        const day = week.days[currentDayIndex];
+        const totalDays = week.days.length;
+        const progress = ((currentDayIndex + 1) / totalDays) * 100;
+
+        // Build HTML
+        const html = `
+            <div class="slide-header">
+                <div>
+                    <span class="day-badge">${day.day}</span>
+                    <h2 class="slide-title">${day.topic}</h2>
+                </div>
+                <div style="text-align: right; color: #888;">
+                    <div>Week ${week.week}</div>
+                    <div style="font-size: 0.9rem">${week.title}</div>
+                </div>
+            </div>
+
+            <div class="slide-content">
+                <div class="panel theory-panel">
+                    <h3>📖 Theory & Concepts</h3>
+                    <ul>
+                        ${day.theory.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="panel practical-panel">
+                    <h3>💻 Practical Tasks</h3>
+                    <ul>
+                        ${day.practical.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                    <div class="code-block">// Example Task:
+// ${day.practical[0]}</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="nav-btn" onclick="prevSlide()" ${currentDayIndex === 0 && currentWeekIndex === 0 ? 'disabled' : ''}>
+                    ❮ Previous
+                </button>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${progress}%"></div>
+                </div>
+
+                <button class="nav-btn" onclick="nextSlide()">
+                    ${(currentWeekIndex === courseData.length - 1 && currentDayIndex === week.days.length - 1) ? 'Finish' : 'Next ❯'}
+                </button>
+            </div>
+        `;
+
+        slideContainer.innerHTML = html;
+        weekSelect.value = currentWeekIndex;
+    }
+
+    function nextSlide() {
+        const totalWeeks = courseData.length;
+        const totalDaysInCurrentWeek = courseData[currentWeekIndex].days.length;
+
+        if (currentDayIndex < totalDaysInCurrentWeek - 1) {
+            currentDayIndex++;
+        } else if (currentWeekIndex < totalWeeks - 1) {
+            currentWeekIndex++;
+            currentDayIndex = 0;
+        }
+        renderSlide();
+    }
+
+    function prevSlide() {
+        if (currentDayIndex > 0) {
+            currentDayIndex--;
+        } else if (currentWeekIndex > 0) {
+            currentWeekIndex--;
+            currentDayIndex = courseData[currentWeekIndex].days.length - 1;
+        }
+        renderSlide();
+    }
+
+    function jumpToWeek() {
+        currentWeekIndex = parseInt(weekSelect.value);
+        currentDayIndex = 0;
+        renderSlide();
+    }
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Initial Render
+    renderSlide();
+
+</script>
+
+</body>
+</html>

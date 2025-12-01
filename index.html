@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Learning Portal</title>
+    <style>
+        :root {
+            --bg-color: #1a1a2e;
+            --header-bg: #16213e;
+            --card-bg: #1f2a48;
+            --accent: #e94560;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --hover-shadow: rgba(233, 69, 96, 0.4);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--header-bg);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Course Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none; /* For wrapping anchor tags */
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--hover-shadow);
+            border-color: var(--accent);
+        }
+
+        .card-image {
+            height: 160px;
+            background-color: #2a3b5e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            padding: 15px 25px;
+            background-color: rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Specific Card Colors/Icons */
+        .aws-icon { color: #FF9900; }
+        .android-icon { color: #3DDC84; }
+        .web-icon { color: #61DAFB; }
+        .data-icon { color: #F7DF1E; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">🚀 StudentPortal</a>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Syllabus</a>
+            <a href="#">Resources</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Welcome Back, Student!</h1>
+        <p>Select a subject below to view course materials, slides, and command sheets.</p>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            
+            <!-- AWS Card -->
+            <!-- Note: Linking to the file we created previously -->
+            <a href="LinuxCommand.html" class="card">
+                <div class="card-image aws-icon">☁️</div>
+                <div class="card-content">
+                    <h2>AWS & Linux</h2>
+                    <p>Essential Linux commands for AWS Cloud Architects. Includes EC2, S3, Permissions, and Service management.</p>
+                </div>
+                <div class="card-footer">
+                    <span>View Slides</span>
+                    <span>→</span>
+                </div>
+            </a>
+
+            <!-- Android Card -->
+            <a href="android1.html" class="card" >
+                <div class="card-image android-icon">📱</div>
+                <div class="card-content">
+                    <h2>Android Development</h2>
+                    <p>Complete syllabus for mobile app development using Java & Kotlin. Learn UI/UX, Activities, and Firebase integration.</p>
+                </div>
+                <div class="card-footer">
+                    <span>View Syllabus</span>
+                    <span>→</span>
+                </div>
+            </a>
+
+            <!-- Web Dev Card -->
+            <a href="#" class="card" onclick="alert('Module locked until Semester 2')">
+                <div class="card-image web-icon">💻</div>
+                <div class="card-content">
+                    <h2>Full Stack Web</h2>
+                    <p>HTML5, CSS3, JavaScript and React. Build responsive websites and deploy them to the cloud.</p>
+                </div>
+                <div class="card-footer">
+                    <span>Start Learning</span>
+                    <span>→</span>
+                </div>
+            </a>
+
+            <!-- Data Science Card -->
+            <a href="#" class="card" onclick="alert('Module locked')">
+                <div class="card-image data-icon">📊</div>
+                <div class="card-content">
+                    <h2>Data Science</h2>
+                    <p>Python for Data Analysis. Pandas, NumPy, and Matplotlib visualization techniques.</p>
+                </div>
+                <div class="card-footer">
+                    <span>Coming Soon</span>
+                    <span>→</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Mastery Roadmap 2025</title>
+    <style>
+        :root {
+            --primary: #3DDC84; /* Android Green */
+            --dark: #073042;    /* Android Dark Blue */
+            --light: #eff7cf;
+            --text: #ffffff;
+            --accent: #4285F4;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slide-container {
+            width: 90%;
+            height: 85%;
+            position: relative;
+            background: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide {
+            display: none;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+        .slide.active {
+            display: flex;
+        }
+        h1 { font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
+        h2 { font-size: 2.2rem; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-top: 0; }
+        h3 { color: var(--accent); margin-top: 20px; }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        ul { line-height: 1.6; font-size: 1.2rem; }
+        li { margin-bottom: 10px; }
+        
+        .badge {
+            background: var(--dark);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid var(--primary);
+        }
+
+        .project-box {
+            background: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent);
+        }
+
+        /* Controls */
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            background: var(--primary);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--dark);
+            transition: 0.3s;
+        }
+        button:hover { background: #fff; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        .progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .intro-text { font-size: 1.5rem; color: #aaa; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <div class="progress" id="progressBar" style="width: 0%;"></div>
+
+    <div class="slide active">
+        <div style="text-align: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" width="100" alt="Android Logo">
+            <h1>90-Day Android Mastery</h1>
+            <p class="intro-text">From Beginner to Production-Ready Developer</p>
+            <div style="margin-top: 30px;">
+                <span class="badge">Java</span>
+                <span class="badge">XML</span>
+                <span class="badge">Jetpack</span>
+                <span class="badge">Firebase</span>
+            </div>
+            <p style="margin-top: 50px; color: #888;">Use the buttons below to navigate.</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Phase 1: Foundations</h2>
+        <p class="intro-text">Weeks 1 - 4</p>
+        <div class="content-grid">
+            <div>
+                <h3>Goal</h3>
+                <p>Master the Android OS basics, Activity Lifecycle, XML Layouts, and simple data storage.</p>
+                <h3>Key Tech</h3>
+                <ul>
+                    <li>Android Studio & Gradle</li>
+                    <li>Activity & Lifecycle</li>
+                    <li>ConstraintLayout</li>
+                    <li>SharedPreferences</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>🏆 Phase Deliverables</h3>
+                <ul>
+                    <li>Hello Screens App</li>
+                    <li>Student List App</li>
+                    <li>Dashboard App</li>
+                    <li>Settings App</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 1</span>
+        <h2>Android Basics & Lifecycle</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>Android Architecture (Kernel, HAL, Framework)</li>
+                    <li>Project Structure (Manifest, Gradle, Res)</li>
+                    <li>Activity Lifecycle (onCreate, onStart, etc.)</li>
+                    <li>Intents (Explicit vs Implicit)</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "Hello Screens"</strong></p>
+                <ul>
+                    <li>Create 3 Activities (Splash, Login, Home).</li>
+                    <li>Implement Lifecycle logs.</li>
+                    <li>Pass data using Intent Extras.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 2</span>
+        <h2>UI Layouts & Input</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li><strong>ConstraintLayout Mastery:</strong> Chains, Guidelines, Bias.</li>
+                    <li>Material Components: TextInputLayout, Buttons.</li>
+                    <li>Styles & Themes.</li>
+                    <li>Menus (Toolbar, Popup).</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "Form Manager"</strong></p>
+                <ul>
+                    <li>Registration & Login Screens.</li>
+                    <li>Input Validation (Regex).</li>
+                    <li>Save Login Session in SharedPreferences.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 3</span>
+        <h2>Fragments & Basic Lists</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>Fragment Lifecycle vs Activity Lifecycle.</li>
+                    <li>FragmentManager (Add, Replace, BackStack).</li>
+                    <li><strong>RecyclerView Intro:</strong> Adapter & ViewHolder pattern.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "User Listing"</strong></p>
+                <ul>
+                    <li>Navigation using Fragments.</li>
+                    <li>RecyclerView with Images (Glide).</li>
+                    <li>Pass data from List to Detail Fragment.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 4</span>
+        <h2>Navigation & Dialogs</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li><strong>ViewBinding:</strong> Replacing findViewById.</li>
+                    <li>BottomNavigationView & Fragment integration.</li>
+                    <li>Dialogs: Alert, Custom, BottomSheet.</li>
+                    <li>Toolbar & SearchView.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "Settings Hub"</strong></p>
+                <ul>
+                    <li>Bottom Navigation (Home, Profile, Settings).</li>
+                    <li>Search functionality in Toolbar.</li>
+                    <li>Persistent BottomSheet.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Phase 2: Advanced UI & Navigation</h2>
+        <p class="intro-text">Weeks 5 - 8</p>
+        <div class="content-grid">
+            <div>
+                <h3>Goal</h3>
+                <p>Master complex UI structures, deep navigation hierarchies, and efficient list handling.</p>
+                <h3>Key Tech</h3>
+                <ul>
+                    <li>Advanced RecyclerView</li>
+                    <li>Deep Linking</li>
+                    <li>Parcelable</li>
+                    <li>Fragment Communication</li>
+                </ul>
+            </div>
+             <div class="project-box">
+                <h3>🏆 Phase Deliverables</h3>
+                <ul>
+                    <li>Contacts App</li>
+                    <li>SocialHub (Instagram Clone UI)</li>
+                    <li>ShareX (Intent App)</li>
+                    <li>FeedMaster</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 5</span>
+        <h2>RecyclerView Mastery</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>Multiple ViewTypes (Chat bubble style).</li>
+                    <li>Click Listeners (Interfaces).</li>
+                    <li>Filtering (Search).</li>
+                    <li>Pagination basics.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "Contacts Pro"</strong></p>
+                <ul>
+                    <li>List with Images.</li>
+                    <li>Search/Filter capability.</li>
+                    <li>Pagination (Load more on scroll).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 6</span>
+        <h2>Advanced Fragments</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>Fragment-to-Fragment communication.</li>
+                    <li>Activity Launch Modes (SingleTop, SingleTask).</li>
+                    <li>Managing state with `show/hide` vs `replace`.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "SocialHub"</strong></p>
+                <ul>
+                    <li>Recreate Instagram-style navigation.</li>
+                    <li>4 Fragments with state retention.</li>
+                    <li>Complex BackStack management.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 7</span>
+        <h2>Intents & Deep Links</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>Passing Objects: <strong>Parcelable</strong> vs Serializable.</li>
+                    <li>Implicit Intents: Camera, Gallery, Dial, Share.</li>
+                    <li>Deep Linking: App Links configuration.</li>
+                    <li>ActivityResultAPI (Modern approach).</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "ShareX"</strong></p>
+                <ul>
+                    <li>Capture Image & Share to WhatsApp.</li>
+                    <li>Deep link support (myapp://profile/123).</li>
+                    <li>Parcelable data transfer.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 8</span>
+        <h2>RecyclerView Optimization</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li><strong>DiffUtil:</strong> Efficient list updates.</li>
+                    <li>Nested RecyclerViews (Horizontal inside Vertical).</li>
+                    <li>Swipe Actions (Delete/Archive).</li>
+                    <li>Sectioned Lists.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "FeedMaster"</strong></p>
+                <ul>
+                    <li>Vertical Feed + Horizontal Stories.</li>
+                    <li>Like/Share interactions inside rows.</li>
+                    <li>DiffUtil for smooth animations.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Phase 3: Networking & Data</h2>
+        <p class="intro-text">Weeks 9 - 12</p>
+        <div class="content-grid">
+            <div>
+                <h3>Goal</h3>
+                <p>Connecting the app to the world (Internet) and persisting data locally and in the cloud.</p>
+                <h3>Key Tech</h3>
+                <ul>
+                    <li>Retrofit & REST API</li>
+                    <li>Room Database (SQLite)</li>
+                    <li>Firebase Suite</li>
+                    <li>MotionLayout</li>
+                </ul>
+            </div>
+             <div class="project-box">
+                <h3>🏆 Phase Deliverables</h3>
+                <ul>
+                    <li>SocialUI (Animations)</li>
+                    <li>UserFeed (API App)</li>
+                    <li>OfflineUserApp (Room)</li>
+                    <li>FirebaseSocialApp (Cloud)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 9</span>
+        <h2>Advanced UI Components</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>ViewPager2 + TabLayout.</li>
+                    <li>CoordinatorLayout + CollapsingToolbar.</li>
+                    <li><strong>MotionLayout:</strong> Complex animations.</li>
+                    <li>FAB Scroll Behaviors.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "SocialUI"</strong></p>
+                <ul>
+                    <li>Parallax Header Profile.</li>
+                    <li>MotionLayout swipe animations.</li>
+                    <li>Tabs for Posts/Photos.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 10</span>
+        <h2>Networking (REST API)</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>HTTP Methods (GET, POST, PUT, DELETE).</li>
+                    <li><strong>Retrofit 2:</strong> Setup & Interface.</li>
+                    <li>JSON Parsing with GSON.</li>
+                    <li>Image Loading with Glide/Picasso.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "UserFeed"</strong></p>
+                <ul>
+                    <li>Fetch Users/Posts from JSONPlaceholder.</li>
+                    <li>POST data (Create new post).</li>
+                    <li>Handle Network Errors & Retries.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 11</span>
+        <h2>Local Database (Room)</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>SQLite vs Room.</li>
+                    <li>Entities, DAOs, Database.</li>
+                    <li><strong>LiveData:</strong> Reactive UI updates.</li>
+                    <li>Database Migrations.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "OfflineNotes"</strong></p>
+                <ul>
+                    <li>CRUD operations for Notes.</li>
+                    <li>Search/Filter using SQL Queries.</li>
+                    <li>Offline-first architecture.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 12</span>
+        <h2>Firebase Integration</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>Firebase Auth (Email/Google).</li>
+                    <li>Firestore (NoSQL Cloud DB).</li>
+                    <li>Firebase Storage (Images).</li>
+                    <li>FCM (Push Notifications).</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "CloudChat"</strong></p>
+                <ul>
+                    <li>Real-time Chat implementation.</li>
+                    <li>Profile Image Upload.</li>
+                    <li>Push Notification on new message.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Phase 4: Professional Grade</h2>
+        <p class="intro-text">Weeks 13 - 16</p>
+        <div class="content-grid">
+            <div>
+                <h3>Goal</h3>
+                <p>Background tasks, Optimization, Testing, and Modern Android Development (Compose).</p>
+                <h3>Key Tech</h3>
+                <ul>
+                    <li>WorkManager</li>
+                    <li>Services & Broadcasts</li>
+                    <li>JUnit & Espresso</li>
+                    <li>Jetpack Compose</li>
+                </ul>
+            </div>
+             <div class="project-box">
+                <h3>🏆 Phase Deliverables</h3>
+                <ul>
+                    <li>BackgroundSync App</li>
+                    <li>OptimizedApp (ProGuard/Tests)</li>
+                    <li>Capstone Project (Full App)</li>
+                    <li>Compose Demo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 13</span>
+        <h2>Background Work</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li><strong>WorkManager:</strong> Guaranteed background tasks.</li>
+                    <li>Services: Foreground vs Bound.</li>
+                    <li>BroadcastReceivers (System events).</li>
+                    <li>ContentProviders.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "SyncMaster"</strong></p>
+                <ul>
+                    <li>Periodic Data Sync using WorkManager.</li>
+                    <li>Foreground Music Player Service.</li>
+                    <li>Battery Level Monitor.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 14</span>
+        <h2>Quality & Deployment</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li><strong>Testing:</strong> JUnit (Unit) & Espresso (UI).</li>
+                    <li>Debugging: LeakCanary, Profiler.</li>
+                    <li>Security: ProGuard/R8 Obfuscation.</li>
+                    <li>Play Store: Signing & App Bundles (AAB).</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "ProductionReady"</strong></p>
+                <ul>
+                    <li>Write Unit Tests for Logic.</li>
+                    <li>Generate Signed APK.</li>
+                    <li>Integrate Crashlytics.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 15</span>
+        <h2>The Capstone Project</h2>
+        <div class="content-grid">
+            <div>
+                <h3>🎯 Objective</h3>
+                <p>Build a full-featured, production-ready application integrating all learned concepts.</p>
+                <h3>🏗️ Architecture</h3>
+                <p>MVVM + Repository Pattern + Clean Architecture.</p>
+            </div>
+            <div class="project-box">
+                <h3>🚀 Features Required</h3>
+                <ul>
+                    <li><strong>Auth:</strong> Firebase Login.</li>
+                    <li><strong>Data:</strong> Room (Offline) + Firestore (Cloud).</li>
+                    <li><strong>Sync:</strong> WorkManager.</li>
+                    <li><strong>Media:</strong> Image Uploads.</li>
+                    <li><strong>UI:</strong> Advanced Animations & Navigation.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="badge">Week 16</span>
+        <h2>Bonus: Jetpack Compose</h2>
+        <div class="content-grid">
+            <div>
+                <h3>📖 Theory</h3>
+                <ul>
+                    <li>Declarative UI vs Imperative XML.</li>
+                    <li>Composables, State, & Props.</li>
+                    <li>LazyColumn (RecyclerView replacement).</li>
+                    <li>Compose Navigation.</li>
+                </ul>
+            </div>
+            <div class="project-box">
+                <h3>💻 Practical Task</h3>
+                <p><strong>App: "ComposeModern"</strong></p>
+                <ul>
+                    <li>Rebuild a previous screen using Compose.</li>
+                    <li>Implement Dark/Light theme switching.</li>
+                    <li>State hoisting & ViewModel integration.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn" onclick="changeSlide(-1)">❮ Previous</button>
+        <button id="nextBtn" onclick="changeSlide(1)">Next ❯</button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+        
+        // Update Progress Bar
+        const progress = ((index + 1) / slides.length) * 100;
+        progressBar.style.width = progress + '%';
+
+        // Button States
+        prevBtn.disabled = index === 0;
+        nextBtn.innerText = index === slides.length - 1 ? 'Finish' : 'Next ❯';
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 0) currentSlide = 0;
+        if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+        showSlide(currentSlide);
+    }
+
+    // Initialize
+    showSlide(0);
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS Course Syllabus Presentation</title>
+<style>
+    body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', sans-serif; overflow: hidden; background: #232f3e; color: white; }
+    
+    .slide-container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
+
+    .slide {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        opacity: 0; transition: opacity 0.5s ease;
+        padding: 40px; box-sizing: border-box;
+        text-align: center;
+        background: radial-gradient(circle at center, #2e3d50 0%, #232f3e 100%);
+        pointer-events: none;
+    }
+
+    .slide.active { opacity: 1; pointer-events: auto; z-index: 10; }
+
+    h1 { font-size: 3rem; margin-bottom: 0.5rem; color: #ff9900; }
+    h2 { font-size: 2.2rem; margin-bottom: 2rem; border-bottom: 3px solid #ff9900; padding-bottom: 10px; }
+    h3 { font-size: 1.5rem; color: #aaa; margin-top: 0; }
+    
+    ul { text-align: left; display: inline-block; font-size: 1.4rem; line-height: 1.8; max-width: 800px; }
+    li { margin-bottom: 10px; }
+    
+    .controls {
+        position: absolute; bottom: 20px; right: 20px; z-index: 100;
+        display: flex; gap: 10px;
+    }
+    
+    button {
+        background: #ff9900; border: none; padding: 10px 20px;
+        font-size: 1rem; font-weight: bold; cursor: pointer; border-radius: 5px;
+        color: #232f3e;
+    }
+
+    button:hover { background: #e68a00; }
+    
+    .slide-number {
+        position: absolute; bottom: 20px; left: 20px;
+        color: #aaa; font-size: 1rem;
+    }
+</style>
+</head>
+<body>
+
+<div class="slide-container" id="deck">
+
+    <div class="slide active">
+        <h1>AWS Certified Solutions Architect</h1>
+        <h3>Training Syllabus (SAA-C02)</h3>
+        <p style="font-size: 1.2rem; margin-top: 50px;">
+            <strong>Besant Technologies</strong><br>
+            100% Job Guarantee Courses<br>
+            📞 +91-8099 770 770
+        </p>
+    </div>
+
+    <div class="slide">
+        <h2>Module 1: Linux Fundamentals</h2>
+        <ul>
+            <li>Filesystem hierarchy & Basic commands</li>
+            <li>Vim editor modes</li>
+            <li>User & Group Management (Create/Modify/Delete)</li>
+            <li>Linux Permissions & File Ownership</li>
+            <li>Software Management: Yellowdog Updater Modified (yum)</li>
+            <li>Runlevels, Services, and Daemons</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 2: Cloud Computing</h2>
+        <ul>
+            <li>Why Cloud? Features & Benefits</li>
+            <li>Deployment Models: Public, Private, Hybrid</li>
+            <li>Service Models: IaaS, PaaS, SaaS</li>
+            <li>Virtualization: Hypervisors & Benefits</li>
+            <li>Scaling: Types and Applications</li>
+            <li>Cloud Cost Models</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 3: AWS Overview</h2>
+        <ul>
+            <li>Global Infrastructure: Regions & Availability Zones</li>
+            <li>Compute, Storage, Network, & Database Services</li>
+            <li>AWS Marketplace Features</li>
+            <li>Creating Free Tier Accounts</li>
+            <li>AWS Management Console Walkthrough</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 4: IAM (Security)</h2>
+        <ul>
+            <li>Password Policies & MFA</li>
+            <li>Users and Groups Management</li>
+            <li>Creating Custom Policies</li>
+            <li>Roles: Creation & Policy Association</li>
+            <li>Programmatic Access vs Console Access</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 5: EC2 (Compute)</h2>
+        <ul>
+            <li>AMI & Marketplace Templates</li>
+            <li>Instance Types: Reserved, On-demand, Spot</li>
+            <li>Security Groups, Tags, Key Pairs</li>
+            <li>Attaching/Detaching EBS Volumes</li>
+            <li>Creating Custom AMIs</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 6: Auto-scaling</h2>
+        <ul>
+            <li>Launch Configurations</li>
+            <li>Fixed Number vs Dynamic Scaling</li>
+            <li>Scaling Policies</li>
+            <li>Auto-scaling Lifecycle</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 7: Load Balancing</h2>
+        <ul>
+            <li>ELB Components (Listeners, Targets)</li>
+            <li>Application Load Balancer (ALB)</li>
+            <li>Network Load Balancer (NLB)</li>
+            <li>Classic Load Balancer (CLB)</li>
+            <li>Migration Strategies</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 8: EBS (Block Storage)</h2>
+        <ul>
+            <li>Creating & Deleting Volumes</li>
+            <li>Attaching Volumes to Instances</li>
+            <li>Snapshot Management (Backup/Restore)</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 9: S3 (Object Storage)</h2>
+        <ul>
+            <li>Buckets, Objects, Upload/Download</li>
+            <li>Durability & Redundancy Models</li>
+            <li>Versioning & Lifecycle Policies</li>
+            <li>Glacier (Archival) & Storage Gateway</li>
+            <li>Transfer Acceleration</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 10: CloudFront (CDN)</h2>
+        <ul>
+            <li>Creating Distributions</li>
+            <li>Hosting Static Websites</li>
+            <li>Global Restrictions (Geo-blocking)</li>
+            <li>Configuring Origins & Behaviors</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 11: Route53 (DNS)</h2>
+        <ul>
+            <li>Hosted Zones & Domain Names</li>
+            <li>Routing Policies (Simple, Weighted, Latency)</li>
+            <li>Pointing Custom Domains to AWS</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 12: Security Management</h2>
+        <ul>
+            <li>Shared Responsibility Model</li>
+            <li>CloudTrail (Auditing)</li>
+            <li>Trusted Advisor (Optimization)</li>
+            <li>Security Best Practices</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 13: VPC (Networking)</h2>
+        <ul>
+            <li>CIDR, Subnets (Public/Private)</li>
+            <li>Security Groups vs Network ACLs</li>
+            <li>VPN Connectivity</li>
+            <li>Internet Gateways & Route Tables</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 14: RDS (Database)</h2>
+        <ul>
+            <li>Engines: MySQL, Oracle, MS SQL</li>
+            <li>Configuration & Backups</li>
+            <li>Maintenance Windows</li>
+            <li>Connecting Applications to DB</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 15: DynamoDB</h2>
+        <ul>
+            <li>NoSQL Basics & Table Creation</li>
+            <li>Strong vs Eventual Consistency</li>
+            <li>Read/Write Capacity Units</li>
+            <li>Configuring Alarms</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 16: Monitoring</h2>
+        <ul>
+            <li>CloudWatch Metrics & Statistics</li>
+            <li>Setting Thresholds & Alarms</li>
+            <li>Notifications (SNS Integration)</li>
+            <li>Auto-scaling Integration</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Module 17: App Services</h2>
+        <ul>
+            <li>SNS: Topics & Subscriptions</li>
+            <li>SQS: Queue Management</li>
+            <li>SES: Email Service</li>
+            <li>Lambda & Elastic Beanstalk Overview</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Modules 18-20: Advanced</h2>
+        <ul>
+            <li><strong>Troubleshooting:</strong> EC2, ELB, CloudWatch Scenarios</li>
+            <li><strong>Architecture:</strong> DR Planning & High Availability</li>
+            <li><strong>DevOps:</strong> Fundamentals & Toolsets</li>
+        </ul>
+    </div>
+    
+    <div class="slide">
+        <h1>Thank You!</h1>
+        <h3>Enroll Now</h3>
+        <p>Start your journey to becoming an AWS Certified Architect.</p>
+    </div>
+
+    <div class="slide-number" id="slideNum">Slide 1 / 20</div>
+    <div class="controls">
+        <button onclick="changeSlide(-1)">❮ Prev</button>
+        <button onclick="changeSlide(1)">Next ❯</button>
+    </div>
+
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const numDisplay = document.getElementById('slideNum');
+
+    function changeSlide(direction) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide += direction;
+
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+
+        slides[currentSlide].classList.add('active');
+        numDisplay.innerText = `Slide ${currentSlide + 1} / ${slides.length}`;
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(event) {
+        if(event.key === "ArrowRight") changeSlide(1);
+        if(event.key === "ArrowLeft") changeSlide(-1);
+    });
+</script>
+
+</body>
+</html>

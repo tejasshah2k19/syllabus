@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS & Linux Essential Commands</title>
+    <style>
+        :root {
+            --bg-color: #1a1a2e;
+            --card-bg: #16213e;
+            --accent: #e94560;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --code-bg: #0f3460;
+            --code-text: #4cc9f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 90%;
+            max-width: 900px;
+            height: 600px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide {
+            flex: 1;
+            padding: 40px;
+            display: none;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease-in-out;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: var(--accent);
+            margin-top: 0;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .command-group {
+            margin-bottom: 20px;
+        }
+
+        .command-title {
+            font-weight: bold;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .example {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-left: 10px;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #c0354c;
+        }
+
+        button:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background-color: var(--accent);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .slide-number {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--card-bg); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <div class="progress-bar" id="progressBar"></div>
+
+        <!-- Slide 1: Intro -->
+        <div class="slide active">
+            <div style="text-align: center; margin-top: 100px;">
+                <h1 style="border:none; font-size: 3rem;">AWS & Linux Essentials</h1>
+                <h2>Interactive Syllabus Review</h2>
+                <p>A slide-by-slide guide to the commands you need for your exam.</p>
+                <p style="color: var(--accent);">Use the buttons below to navigate.</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Basic Navigation -->
+        <div class="slide">
+            <h1>1. Basic Navigation & File Commands</h1>
+            
+            <div class="command-group">
+                <span class="command-title">Where am I?</span>
+                <code>pwd</code> <span class="example">Prints "/home/ec2-user"</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Listing Files</span>
+                <code>ls -la</code> <span class="example">Lists all files (hidden too) with details like permissions.</span><br>
+                <code>ls -lh</code> <span class="example">Lists files with human-readable sizes (MB, GB).</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Directories</span>
+                <code>cd /var/www</code> <span class="example">Change directory to /var/www.</span><br>
+                <code>mkdir -p app/src</code> <span class="example">Creates parent and child directories at once.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Manipulation</span>
+                <code>cp -r source_folder dest_folder</code> <span class="example">Copy a folder recursively.</span><br>
+                <code>rm -rf my_folder</code> <span class="example">Force remove a folder (Careful!).</span><br>
+                <code>mv old.txt new.txt</code> <span class="example">Rename or move a file.</span>
+            </div>
+        </div>
+
+        <!-- Slide 3: Viewing & Editing -->
+        <div class="slide">
+            <h1>2. File Viewing & Editing</h1>
+            
+            <div class="command-group">
+                <span class="command-title">Editors</span>
+                <code>nano config.conf</code> <span class="example">Easy terminal editor. (Ctrl+O to save, Ctrl+X to exit).</span><br>
+                <code>vi / vim</code> <span class="example">Advanced editors. (Press 'i' to insert, ':wq' to save/quit).</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Viewing Content</span>
+                <code>cat file.txt</code> <span class="example">Dumps whole file content.</span><br>
+                <code>head -n 5 file.txt</code> <span class="example">Shows first 5 lines.</span><br>
+                <code>tail -f /var/log/messages</code> <span class="example">Follows the end of a file in real-time (Great for logs).</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Search & Filter</span>
+                <code>grep -r "error" .</code> <span class="example">Recursively search for "error" in current directory.</span><br>
+                <code>grep -i "failed" log.txt</code> <span class="example">Case-insensitive search.</span>
+            </div>
+        </div>
+
+        <!-- Slide 4: Users & Permissions -->
+        <div class="slide">
+            <h1>3. User & Permission Management</h1>
+            
+            <div class="command-group">
+                <span class="command-title">Super User</span>
+                <code>sudo command</code> <span class="example">Run command as root.</span><br>
+                <code>sudo su -</code> <span class="example">Switch to root user shell entirely.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Permissions (chmod)</span>
+                <code>chmod 400 keypair.pem</code> <span class="example">Read-only by owner (Required for SSH keys).</span><br>
+                <code>chmod 755 script.sh</code> <span class="example">Owner can write; everyone else can read/execute.</span><br>
+                <code>chmod +x script.sh</code> <span class="example">Make a file executable.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Ownership (chown)</span>
+                <code>chown ec2-user:apache index.html</code> <span class="example">Change owner to ec2-user and group to apache.</span>
+            </div>
+        </div>
+
+        <!-- Slide 5: Networking -->
+        <div class="slide">
+            <h1>4. Networking Commands</h1>
+            
+            <div class="command-group">
+                <span class="command-title">Connectivity</span>
+                <code>ping google.com</code> <span class="example">Check internet connection.</span><br>
+                <code>curl http://localhost</code> <span class="example">Test if your web server is responding locally.</span><br>
+                <code>wget https://example.com/file.zip</code> <span class="example">Download a file from the web.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Ports & IP</span>
+                <code>netstat -tulpn</code> <span class="example">Show all listening ports (Is port 80 open?).</span><br>
+                <code>ifconfig</code> or <code>ip a</code> <span class="example">Show IP address configuration.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Remote Access</span>
+                <code>ssh -i key.pem user@ip</code> <span class="example">Secure Shell connection.</span><br>
+                <code>scp -i key.pem file.txt user@ip:~</code> <span class="example">Secure Copy file to remote server.</span>
+            </div>
+        </div>
+
+        <!-- Slide 6: Monitoring -->
+        <div class="slide">
+            <h1>5. System Monitoring & Processes</h1>
+            
+            <div class="command-group">
+                <span class="command-title">Resources</span>
+                <code>top</code> or <code>htop</code> <span class="example">Real-time view of CPU/RAM usage.</span><br>
+                <code>df -h</code> <span class="example">Check disk space usage (human readable).</span><br>
+                <code>free -h</code> <span class="example">Check available RAM.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Processes</span>
+                <code>ps aux | grep java</code> <span class="example">Find a running Java process.</span><br>
+                <code>kill -9 1234</code> <span class="example">Force kill process with PID 1234.</span>
+            </div>
+        </div>
+
+        <!-- Slide 7: Package Management -->
+        <div class="slide">
+            <h1>6. Package Management</h1>
+            <p><i>Command depends on your OS (Amazon Linux/RHEL vs Ubuntu).</i></p>
+            
+            <div class="command-group">
+                <span class="command-title">Amazon Linux / CentOS (yum)</span>
+                <code>yum update -y</code> <span class="example">Update all packages.</span><br>
+                <code>yum install httpd -y</code> <span class="example">Install Apache web server.</span><br>
+                <code>yum remove httpd</code> <span class="example">Uninstall a package.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Ubuntu / Debian (apt)</span>
+                <code>apt update && apt upgrade</code> <span class="example">Refresh repo list and upgrade packages.</span><br>
+                <code>apt install apache2</code> <span class="example">Install Apache.</span>
+            </div>
+        </div>
+
+        <!-- Slide 8: Services -->
+        <div class="slide">
+            <h1>7. Systemctl Service Management</h1>
+            <p><i>Control background services like Web Servers or Databases.</i></p>
+            
+            <div class="command-group">
+                <code>systemctl start httpd</code> <span class="example">Start the service immediately.</span><br>
+                <code>systemctl stop httpd</code> <span class="example">Stop the service.</span><br>
+                <code>systemctl restart httpd</code> <span class="example">Restart (useful after config changes).</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Important for AWS</span>
+                <code>systemctl enable httpd</code> <span class="example">Ensure service starts automatically on reboot!</span><br>
+                <code>systemctl status httpd</code> <span class="example">Check if it's running or failed.</span>
+            </div>
+        </div>
+
+        <!-- Slide 9: Archives & Logs -->
+        <div class="slide">
+            <h1>8 & 9. Archives & Logs</h1>
+            
+            <div class="command-group">
+                <span class="command-title">Zipping/Tar</span>
+                <code>tar -cvf backup.tar /var/www</code> <span class="example">Create a tar archive of a folder.</span><br>
+                <code>tar -xvf backup.tar</code> <span class="example">Extract a tar archive.</span><br>
+                <code>zip -r code.zip folder/</code> <span class="example">Zip a folder recursively.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Log Files (Debugging)</span>
+                <code>tail -f /var/log/messages</code> <span class="example">System logs (Amazon Linux).</span><br>
+                <code>tail -f /var/log/syslog</code> <span class="example">System logs (Ubuntu).</span><br>
+                <code>tail -f /var/log/nginx/error.log</code> <span class="example">Web server errors.</span>
+            </div>
+        </div>
+
+         <!-- Slide 10: Git & Docker -->
+         <div class="slide">
+            <h1>11 & 12. Git & Docker</h1>
+            
+            <div class="command-group">
+                <span class="command-title">Git</span>
+                <code>git clone https://github.com/user/repo.git</code> <span class="example">Download code.</span><br>
+                <code>git pull</code> <span class="example">Update local code from remote.</span><br>
+                <code>git commit -m "msg"</code> <span class="example">Save changes locally.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">Docker</span>
+                <code>docker ps</code> <span class="example">List running containers.</span><br>
+                <code>docker build -t myapp .</code> <span class="example">Build an image from Dockerfile.</span><br>
+                <code>docker run -p 80:80 myapp</code> <span class="example">Run container on port 80.</span>
+            </div>
+        </div>
+
+        <!-- Slide 11: AWS CLI -->
+        <div class="slide">
+            <h1>13. AWS CLI</h1>
+            <p><i>Managing AWS resources directly from the Linux terminal.</i></p>
+            
+            <div class="command-group">
+                <span class="command-title">Setup</span>
+                <code>aws configure</code> <span class="example">Enter Access Key, Secret Key, Region.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">S3 (Storage)</span>
+                <code>aws s3 ls</code> <span class="example">List all buckets.</span><br>
+                <code>aws s3 cp file.txt s3://mybucket/</code> <span class="example">Upload file to S3.</span><br>
+                <code>aws s3 sync . s3://mybucket/</code> <span class="example">Sync current folder to S3.</span>
+            </div>
+
+            <div class="command-group">
+                <span class="command-title">EC2</span>
+                <code>aws ec2 describe-instances</code> <span class="example">Get JSON details of your instances.</span>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="prevBtn" onclick="changeSlide(-1)">&#8592; Previous</button>
+            <span class="slide-number" id="slideNum">1 / 11</span>
+            <button id="nextBtn" onclick="changeSlide(1)">Next &#8594;</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const slideNum = document.getElementById('slideNum');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+
+            // Update Progress Bar
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Update Slide Number text
+            slideNum.innerText = `${currentSlide + 1} / ${slides.length}`;
+
+            // Button states
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+            updateSlide();
+        }
+
+        // Initialize
+        updateSlide();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+        });
+    </script>
+</body>
+</html>
